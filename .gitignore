@@ -1,0 +1,38 @@
+# === Rust build artifacts ===
+/target/              # Compiled output directory
+**/*.rs.bk            # Backup files sometimes created by editors
+
+# === Cargo specific ===
+/Cargo.lock           # Lock file for libraries (optional in libraries, but include for binaries)
+/.cargo/              # Cargo configuration directory (user-specific settings)
+
+# === IDEs and editors ===
+
+# VS Code
+/.vscode/
+/*.code-workspace
+
+# IntelliJ / CLion / RustRover
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+.#*
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# === OS-generated ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Logs and temp files ===
+*.log
+*.tmp
