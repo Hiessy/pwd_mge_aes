@@ -1,10 +1,10 @@
 # === Rust build artifacts ===
-/target/              # Compiled output directory
-**/*.rs.bk            # Backup files sometimes created by editors
+target/
+**/*.rs.bk
 
 # === Cargo specific ===
-/Cargo.lock           # Lock file for libraries (optional in libraries, but include for binaries)
-/.cargo/              # Cargo configuration directory (user-specific settings)
+Cargo.lock
+.cargo/              
 
 # === IDEs and editors ===
 
@@ -36,3 +36,4 @@ desktop.ini
 # === Logs and temp files ===
 *.log
 *.tmp
+

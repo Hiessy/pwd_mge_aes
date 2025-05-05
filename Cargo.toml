@@ -1,0 +1,13 @@
+[package]
+name = "pwd_mgr_rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aes = "0.8.2"
+rand = "0.8.5"
+zeroize = { version = "1.6", features = ["derive"] }  # ← Add derive feature
+aead = "0.5"      # Authenticated encryption traits
+
+[dev-dependencies]
+hex-literal = "0.3.4"  # For test vectors (optional)
