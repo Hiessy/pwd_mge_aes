@@ -6,8 +6,7 @@ use zeroize::{Zeroize, Zeroizing};
 
 #[derive(Zeroize)]
 #[zeroize(drop)]
-pub struct AesKey([u8; 32]);
-
+pub struct AesKey(#[zeroize(skip)] [u8; 32]);  // Skip prevents double-zeroize
 
 impl AesKey {
     /// Create new key from raw bytes
@@ -17,15 +16,16 @@ impl AesKey {
     
     /// Generate a new random key
     pub fn random() -> Self {
-        let mut key = [0u8; 32];
-        rand::thread_rng().fill_bytes(&mut key);
-        Self(key)
+        let mut key = Zeroizing::new([0u8; 32]);  // Use Zeroizing for temp storage
+        rand::thread_rng().fill_bytes(&mut *key);
+        Self(*key)  // Copies from Zeroizing buffer
     }
     
     /// Get reference to key bytes
     pub fn as_bytes(&self) -> &[u8; 32] {
         &self.0
     }
+
 }
 
 /// Initialization Vector for CBC mode

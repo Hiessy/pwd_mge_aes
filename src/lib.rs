@@ -1,14 +1,24 @@
 // lib.rs
-pub mod crypto;      // Your existing AES implementation
-pub mod models;     // PasswordEntry/Vault structs
-pub mod vault;      // VaultManager
-pub mod auth;       // Key derivation
-pub mod errors;     // Custom error handling
+pub mod crypto;
+pub mod models;
+pub mod vault;
+pub mod auth;
+pub mod errors;
 
-// Re-export main functionality
-pub use vault::VaultManager;
+// Re-exports
+pub use crypto::{AesKey, generate_iv};
 pub use models::{PasswordEntry, PasswordVault};
+pub use vault::VaultManager;
 pub use auth::derive_key;
 
 #[cfg(feature = "python")]
-pub mod python;     // PyO3 bindings (optional)
+pub mod python;
+
+// In lib.rs
+#[cfg(test)]
+mod tests {
+    mod crypto_test;
+    mod vault_test;
+    mod auth_test;
+    mod models_test;
+}

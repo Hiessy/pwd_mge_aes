@@ -1,4 +1,11 @@
-use crate::crypt::{AesKey, encrypt_cbc, decrypt_cbc};
+// vault.rs
+use std::path::{Path, PathBuf};
+use serde_json;
+use zeroize::Zeroizing;
+use crate::{
+    crypto::{AesKey, encrypt_cbc, decrypt_cbc, generate_iv},
+    models::PasswordVault
+};
 
 pub struct VaultManager {
     key: AesKey,

@@ -1,4 +1,6 @@
+// auth.rs
 use argon2::{Argon2, PasswordHasher, password_hash::{SaltString, rand_core::OsRng}};
+use crate::crypto::AesKey;
 
 pub fn derive_key(password: &str) -> AesKey {
     let salt = SaltString::generate(&mut OsRng);
