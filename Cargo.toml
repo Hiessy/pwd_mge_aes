@@ -17,5 +17,8 @@ argon2 = "0.5"
 thiserror = "1.0"  # For better error handling
 pyo3 = { version = "0.20", optional = true }
 
+[lib]
+crate-type = ["cdylib"]  # Required for Python bindings
+
 [dev-dependencies]
 tempfile = "3.3"
