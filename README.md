@@ -17,7 +17,14 @@ let iv = generate_iv();
 let ciphertext = encrypt_cbc(&key, &iv, "password123");
 let decrypted = decrypt_cbc(&key, &iv, &ciphertext).unwrap();
 ```
+## Create a virtual env steps:
+```
+python -m venv venv
 
+source venv/bin/activate
+
+pip install -r req
+```
 ## Testing
 ```bash
 cargo test
